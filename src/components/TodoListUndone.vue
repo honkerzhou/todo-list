@@ -58,13 +58,22 @@
 <script>
 export default {
   props: {
-    todos: Array
+    todos: {
+      type: Array,
+      default: []
+    }
   },
   data() {
     return {
       isIndeterminate: false,
       checkAll: false,
       checkedTodos: []
+    }
+  },
+  watch: {
+    todos() {
+      this.checkedTodos = []
+      this.isIndeterminate = false
     }
   },
   methods: {

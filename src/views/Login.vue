@@ -15,6 +15,7 @@
         <el-input
           placeholder="请输入用户名"
           v-model="form.username"
+          clearable
         ></el-input>
       </el-form-item>
       <el-form-item
@@ -24,6 +25,9 @@
         <el-input
           placeholder="请输入密码"
           v-model="form.password"
+          show-password
+         clearable
+         @keyup.enter.native="login"
         ></el-input>
       </el-form-item>
       <el-form-item>
