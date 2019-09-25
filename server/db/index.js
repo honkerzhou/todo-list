@@ -4,6 +4,7 @@ const initDB = dbUrl => {
     mongoose.connect(dbUrl, {
         useCreateIndex: true,
         useNewUrlParser: true,
+        useUnifiedTopology: true
     });
 
     mongoose.connection.on('connected', function() {

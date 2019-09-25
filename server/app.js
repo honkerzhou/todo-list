@@ -17,9 +17,9 @@ app.use(cors());
 app.use(bodyParser())
 app.use(router.routes())
 app.use(router.allowedMethods())
-app.use(koaStatic(path.resolve(__dirname, 'dist')));
+app.use(koaStatic(path.resolve(__dirname, '../dist')));
 
-app.listen(config.PORT, '127.0.0.1', function () {
+app.listen(config.PORT, function () {
   console.log(
     '------Server is running on: http://localhost:%s------',
     config.PORT

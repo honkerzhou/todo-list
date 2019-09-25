@@ -3,9 +3,7 @@ const checkAuth = require('./middlewares/check-auth')
 const userController = require('./controller/user')
 const todoController = require('./controller/todo')
 
-const router = new Router({
-  prefix: '/api/v1',
-})
+const router = new Router()
 
 // router.use('/todos', function (ctx, next) {
 //   return next().then(function () {

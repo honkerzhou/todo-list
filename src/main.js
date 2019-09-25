@@ -9,7 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 
 const axiosInstance = axios.create({
-  baseURL: 'http://127.0.0.1:5000/api/v1'
+  baseURL: '/api'
 })
 // Add a response interceptor
 axiosInstance.interceptors.response.use(function (response) {
