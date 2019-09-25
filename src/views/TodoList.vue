@@ -16,9 +16,7 @@
           type="flex"
           justify="center"
         >
-          <el-col :span="2">
-            <el-button @click="addTodo">新增待办项</el-button>
-          </el-col>
+          <el-button @click="addTodo">新增待办项</el-button>
         </el-row>
         <el-collapse v-model="collapseNames">
           <el-collapse-item
@@ -69,7 +67,7 @@ export default {
         {
           value: "1",
           label: "今日待办"
-        },
+        }
         // {
         //   value: "2",
         //   label: "周"
@@ -83,7 +81,7 @@ export default {
         //   label: "年"
         // }
       ],
-      activeTab: '1',
+      activeTab: "1",
       collapseNames: ["1"],
       type: 1,
       todosData: {

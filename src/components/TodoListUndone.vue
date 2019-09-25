@@ -14,6 +14,7 @@
       <el-row
         v-for="todo in todos"
         :key="todo._id"
+        :gutter="10"
         type="flex"
         justify="space-between"
         class="todo-row"
@@ -60,7 +61,9 @@ export default {
   props: {
     todos: {
       type: Array,
-      default: []
+      default() {
+        return []
+      }
     }
   },
   data() {
@@ -99,6 +102,12 @@ export default {
 
 <style lang="scss" scoped>
 .todo-row {
-  padding: 10px 0;
+  align-items: center;
+  margin: 10px 0;
+  ::v-deep .el-checkbox__label {
+    vertical-align: middle;
+    white-space: normal;
+  }
 }
+
 </style>

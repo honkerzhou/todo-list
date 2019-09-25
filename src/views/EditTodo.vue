@@ -14,7 +14,9 @@
       <el-input
         type="textarea"
         v-model="todo.content"
-        autosize
+        maxlength="1000"
+        :autosize="{ minRows: 2, maxRows: 4}"
+        show-word-limit
       ></el-input>
     </el-form-item>
     <!-- <el-form-item label="待办类型">
@@ -71,8 +73,7 @@ export default {
       ],
       validateRules: {
         content: [
-          { required: true, message: "请输入待办内容", trigger: "blur" },
-          { max: 1000, message: "长度在 1000 个字符", trigger: "blur" }
+          { required: true, message: "请输入待办内容", trigger: "blur" }
         ],
         expectTime: [
           { required: true, message: "请选择完成日期", trigger: "change" }
@@ -117,6 +118,9 @@ export default {
     width: 100%;
     min-width: 350px;
     max-width: 600px;
+    ::v-deep .el-textarea .el-input__count {
+      line-height: normal;
+    } 
   }
 }
 </style>
