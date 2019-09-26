@@ -1,14 +1,14 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
 import TodoList from '@/views/TodoList'
 import AddTodo from '@/views/AddTodo'
 import EditTodo from '@/views/EditTodo'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-const router = new Router({
+const router = new VueRouter({
   mode: 'history',
   routes: [
     {

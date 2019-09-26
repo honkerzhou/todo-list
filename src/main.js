@@ -3,10 +3,30 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+// import ELEMENT from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
 
-Vue.use(ElementUI)
+// Vue.use(ELEMENT)
+import {
+  Button, Input, Checkbox, CheckboxGroup, Row, Col, Form, FormItem, TimePicker, Tabs,
+  TabPane, Collapse, CollapseItem, Radio, RadioGroup, Message
+} from 'element-ui'
+Vue.use(Button)
+Vue.use(Input)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(TimePicker)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Collapse)
+Vue.use(CollapseItem)
+Vue.use(Radio)
+Vue.use(RadioGroup)
+Vue.prototype.$message = Message;
 
 const axiosInstance = axios.create({
   baseURL: '/api'
