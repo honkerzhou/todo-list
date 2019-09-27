@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '@/views/Login'
-import Register from '@/views/Register'
-import TodoList from '@/views/TodoList'
-import AddTodo from '@/views/AddTodo'
-import EditTodo from '@/views/EditTodo'
+// import Login from '@/views/Login'
+// import Register from '@/views/Register'
+// import TodoList from '@/views/TodoList'
+// import AddTodo from '@/views/AddTodo'
+// import EditTodo from '@/views/EditTodo'
+const Login = () => import('@/views/Login')
+const Register = () => import('@/views/Register')
+const TodoList = () => import('@/views/TodoList')
+const AddTodo = () => import('@/views/AddTodo')
+const EditTodo = () => import('@/views/EditTodo')
 
 Vue.use(VueRouter)
 
