@@ -1,13 +1,13 @@
 const handleRes = require('../utils/response')
 
-async function handleErrors(ctx, next) {
+async function handleErrors (ctx, next) {
   try {
     await next()
   } catch (e) {
-    let message = '', errors = []
+    let message = ''; const errors = []
 
     switch (e.name) {
-      case "ValidationError": {
+      case 'ValidationError': {
         const errorFields = Object.keys(e.errors)
 
         errorFields.forEach(item => {
@@ -40,4 +40,4 @@ async function handleErrors(ctx, next) {
   }
 }
 
-module.exports = handleErrors;
+module.exports = handleErrors

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
 const userSchema = new Schema({
   username: {
@@ -25,12 +25,12 @@ const userSchema = new Schema({
     type: Number,
     default: 1
   }
-});
+})
 
 userSchema.plugin(uniqueValidator, {
   message: '该用户名已存在'
 })
 
-const UserModel = mongoose.model('User', userSchema);
+const UserModel = mongoose.model('User', userSchema)
 
-module.exports = UserModel;
+module.exports = UserModel

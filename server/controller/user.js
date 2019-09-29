@@ -9,8 +9,8 @@ module.exports = {
     const token = jwt.sign({
       id: data.id
     }, 'todoListByHonkerzhou', {
-        expiresIn: '1h'
-      })
+      expiresIn: '1h'
+    })
     handleRes({
       ctx,
       status: 201,
@@ -22,15 +22,15 @@ module.exports = {
   validUser: async (ctx) => {
     const { username, password } = ctx.request.body
     const userData = await UserModel.findOne({
-        username
-      })
+      username
+    })
     if (userData) {
       if (userData.password === password) {
         const token = jwt.sign({
           id: userData.id
         }, 'todoListByHonkerzhou', {
-            expiresIn: '1h'
-          })
+          expiresIn: '1h'
+        })
         handleRes({
           ctx,
           data: {

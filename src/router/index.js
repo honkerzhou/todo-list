@@ -49,15 +49,15 @@ const router = new VueRouter({
       meta: {
         requireAuth: true // flag标识此路由需要登录
       }
-    },
+    }
   ]
 })
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) {
-    const token = localStorage.getItem('token')
+    const token = window.localStorage.getItem('token')
     if (token) {
-      Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+      Vue.prototype.$http.defaults.headers.common.Authorization = token
       next()
     } else {
       next('/login')

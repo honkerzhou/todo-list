@@ -19,5 +19,4 @@ router
   .patch('/todos/:_id', checkAuth, todoController.updateTodo)
   // .delete('/todos/:_id', checkAuth, todoController.deleteTodo)
 
-
-module.exports = router;
+module.exports = router

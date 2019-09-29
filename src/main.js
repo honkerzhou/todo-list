@@ -26,7 +26,7 @@ Vue.use(Collapse)
 Vue.use(CollapseItem)
 Vue.use(Radio)
 Vue.use(RadioGroup)
-Vue.prototype.$message = Message;
+Vue.prototype.$message = Message
 
 const axiosInstance = axios.create({
   baseURL: '/api'
@@ -34,20 +34,19 @@ const axiosInstance = axios.create({
 // Add a response interceptor
 axiosInstance.interceptors.response.use(function (response) {
   // Do something with response data
-  return response;
+  return response
 }, function (error) {
-
   // 用户未通过服务器验证时，需进入登录页面重新登录
   if (error.response.status === 401) {
     router.push('/login')
   }
-  return Promise.reject(error);
-});
+  return Promise.reject(error)
+})
 Vue.prototype.$http = axiosInstance
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
