@@ -2,11 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
-
-// import ELEMENT from 'element-ui'
-// import 'element-ui/lib/theme-chalk/index.css'
-
-// Vue.use(ELEMENT)
 import {
   Button, Input, Checkbox, CheckboxGroup, Row, Col, Form, FormItem, TimePicker, Tabs,
   TabPane, Collapse, CollapseItem, Radio, RadioGroup, Message
@@ -31,9 +26,9 @@ Vue.prototype.$message = Message
 const axiosInstance = axios.create({
   baseURL: '/api'
 })
-// Add a response interceptor
+
+// 添加响应拦截器
 axiosInstance.interceptors.response.use(function (response) {
-  // Do something with response data
   return response
 }, function (error) {
   // 用户未通过服务器验证时，需进入登录页面重新登录

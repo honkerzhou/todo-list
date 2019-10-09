@@ -6,7 +6,6 @@
       :indeterminate="isIndeterminate"
       @change="handleCheckAllChange"
     >全选</el-checkbox>
-    <!-- <div style="margin: 15px 0;"></div> -->
     <el-checkbox-group
       v-model="checkedTodos"
       @change="handleCheckedTodosChange"
@@ -80,6 +79,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * 全选复选框值变动时触发
+     * 
+     * @param {Boolean} val 复选框变动后的值
+     */
     handleCheckAllChange(val) {
       if (val) {
         this.checkedTodos = this.todos.map(todo => {
@@ -90,6 +94,12 @@ export default {
       }
       this.isIndeterminate = false
     },
+
+    /**
+     * 待处理待办项复选框组值变动时触发
+     * 
+     * @param {Array} value 复选框组值变动后的值
+     */
     handleCheckedTodosChange(value) {
       let checkedCount = value.length
       this.checkAll = checkedCount === this.todos.length

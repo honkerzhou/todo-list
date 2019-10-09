@@ -3,6 +3,7 @@ const handleRes = require('../utils/response')
 const mongoose = require('mongoose')
 
 module.exports = {
+  // 根据用户id和待办事项类型查找相应待办事项
   getTodos: async (ctx) => {
     const ownerId = ctx.state.user.id
     const todosArr = await TodoModel.aggregate([
@@ -16,6 +17,8 @@ module.exports = {
         }
       }
     ])
+
+    // 将查找到的待办事项按待办事项的状态分组
     const data = {
       undone: [],
       done: [],
@@ -39,6 +42,8 @@ module.exports = {
       data
     })
   },
+
+  // 新增待办项
   addTodo: async (ctx) => {
     const ownerId = ctx.state.user.id
     const todos = ctx.request.body.todoItems.map(todo => {
@@ -51,12 +56,13 @@ module.exports = {
       data
     })
   },
+
+  // 更新待办项状态
   updateTodo: async (ctx) => {
     const idArr = ctx.params._id.split(':')
     const objectIdArr = idArr.map(id => {
       return mongoose.Types.ObjectId(id)
     })
-    // data = await TodoModel.findByIdAndUpdate(id, ctx.request.body)
     const data = await TodoModel.update(
       { _id: { $in: objectIdArr } },
       { $set: ctx.request.body },
@@ -67,6 +73,8 @@ module.exports = {
       data
     })
   },
+
+  // 删除待办项
   deleteTodo: async (ctx) => {
     const id = ctx.params._id
     const data = await TodoModel.findByIdAndDelete(id)

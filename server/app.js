@@ -7,8 +7,6 @@ const config = require('./config')
 const initDB = require('./db')
 const handleErrors = require('./middlewares/handle-errors')
 const router = require('./routes')
-// const userRouter = require('./routes/user');
-// const todoRouter = require('./routes/todo');
 
 const app = new Koa()
 

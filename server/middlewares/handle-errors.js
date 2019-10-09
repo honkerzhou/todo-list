@@ -1,10 +1,12 @@
 const handleRes = require('../utils/response')
 
+// 自定义的错误处理中间件，以符合RestfulAPI
 async function handleErrors (ctx, next) {
   try {
     await next()
   } catch (e) {
-    let message = ''; const errors = []
+    let message = ''
+    const errors = []
 
     switch (e.name) {
       case 'ValidationError': {

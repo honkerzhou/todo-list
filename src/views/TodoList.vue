@@ -99,6 +99,13 @@ export default {
       this.type = targetTab.name
       this.getTodoList()
     },
+
+    /**
+     * '做完啦'按钮点击时，即待处理待办项完成时触发
+     * 
+     * @event button#click
+     * @param {Array} todos 选中的待办项的id组成的数组
+     */
     todoBeDone(todos) {
       const idStr = todos.join(":")
       this.$http
@@ -115,6 +122,14 @@ export default {
           }
         })
     },
+
+    /**
+     * '删除'按钮点击时触发
+     * 
+     * @event button#click
+     * @param {Object} todo 待办项对象
+     * @param {string} todo.id 待办项id
+     */
     forgoTodoUndone(todo) {
       this.$confirm("确定放弃该待办项?", "提示", {
         confirmButtonText: "确定",
@@ -147,16 +162,12 @@ export default {
       })
     },
 
-    /**
-     * 创建todoList
-     */
+    // 前往新增待办项页面
     addTodo() {
       this.$router.push("/add")
     },
-    /**
-     * 获取todoList
-     * @param list  list名称
-     */
+    
+    // 获取todoList
     getTodoList() {
       this.$http
         .get("/todos", {
