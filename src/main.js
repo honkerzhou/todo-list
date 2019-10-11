@@ -1,7 +1,10 @@
 import Vue from 'vue'
+import axios from 'axios'
 import App from './App.vue'
 import router from './router'
-import axios from 'axios'
+import store from './store'
+
+// 按需引入element ui
 import {
   Button, Input, Checkbox, CheckboxGroup, Row, Col, Form, FormItem, TimePicker, Tabs,
   TabPane, Collapse, CollapseItem, Radio, RadioGroup, Message
@@ -23,11 +26,12 @@ Vue.use(Radio)
 Vue.use(RadioGroup)
 Vue.prototype.$message = Message
 
+// 自定义axios实例
 const axiosInstance = axios.create({
   baseURL: '/api'
 })
 
-// 添加响应拦截器
+// 为axios实例添加响应拦截器
 axiosInstance.interceptors.response.use(function (response) {
   return response
 }, function (error) {
@@ -43,5 +47,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

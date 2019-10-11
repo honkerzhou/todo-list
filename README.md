@@ -1,6 +1,6 @@
 # todo-list
 一个体验全栈开发的入门级练手项目，前后端分离。  
-前端：Vue CLI 3.x + Vue 2.x + Vue Router + Element-UI + Axios + ES6  
+前端：Vue CLI 3.x + Vue 2.x + Vue Router + Vuex + Element-UI + Axios + ES6  
 后端：Node.js(Koa2) + MongoDB + Restful API  
 
 
@@ -12,6 +12,7 @@
 - ......
 ## 项目资源
 在线地址：[todo.honkerzhou.com](http://todo.honkerzhou.com)  
+体验账号/密码：honkerzhou
 配套教程（完善中）：[手把手带你入门全栈](https://honkerzhou.com/tutorial/todo-list/)
 ## 运行项目
 1. 先clone代码到本地
@@ -48,6 +49,9 @@
   - [x] Element UI 按需加载(`chunk-vendors.js`从803KB降至321KB，目标244KB)
   - [x] 路由懒加载
   - [ ] 使用 CDN 外部加载资源（今天尝试了一下，有两个问题：1、CDN可能会挂；2、开发和线上环境暂时无法完全分离配置，待继续研究）
+- [ ] 开发V2版本
+  - [ ] 每日待办重置（可选择恢复前一日未做完的待办）
+  - [ ] 历史待办清单
 ## License
 [Apache2.0](./LICENSE)
 

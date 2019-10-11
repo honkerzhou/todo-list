@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 const Login = () => import('@/views/Login')
 const Register = () => import('@/views/Register')
-const TodoList = () => import('@/views/TodoList')
+const Index = () => import('@/views/Index')
 const AddTodo = () => import('@/views/AddTodo')
 const EditTodo = () => import('@/views/EditTodo')
 
@@ -24,8 +24,8 @@ const router = new VueRouter({
     },
     {
       path: '/',
-      name: 'todoList',
-      component: TodoList,
+      name: 'index',
+      component: Index,
       meta: {
         requireAuth: true
       }
