@@ -12,7 +12,7 @@
 - ......
 ## 项目资源
 在线地址：[todo.honkerzhou.com](http://todo.honkerzhou.com)  
-体验账号/密码：honkerzhou
+体验账号/密码：honkerzhou  
 配套教程（完善中）：[手把手带你入门全栈](https://honkerzhou.com/tutorial/todo-list/)
 ## 运行项目
 1. 先clone代码到本地
