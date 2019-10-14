@@ -25,22 +25,25 @@ export default new Vuex.Store({
   actions: {
     // 获取所有待办项的数据
     getTodosData({ state, commit }) {
-      Vue.prototype.$http
-        .get("/todos", {
-          params: {
-            type: state.todoType
-          }
-        })
-        .then(res => {
-          commit('changeTodosData', {
-            todosData: res.data
+      return new Promise((resolve) => {
+        Vue.prototype.$http
+          .get("/todos", {
+            params: {
+              type: state.todoType
+            }
           })
-        })
-        .catch(err => {
-          if (err.response) {
-            Vue.prototype.$message.error(err.response.data)
-          }
-        })
+          .then(res => {
+            commit('changeTodosData', {
+              todosData: res.data
+            })
+            resolve()
+          })
+          .catch(err => {
+            if (err.response) {
+              Vue.prototype.$message.error(err.response.data)
+            }
+          })
+      })
     }
   }
 })

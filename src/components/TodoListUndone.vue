@@ -109,21 +109,39 @@ export default {
      * @param {Object} todo 待办项对象
      * @param {string} todo._id 待办项id
      */
-    forgoTodoUndone(todo) {
-      this.$http
-        .patch(`/todos/${todo._id}`, {
-          status: 3
+    async forgoTodoUndone(todo) {
+      try {
+        await this.$http.patch(`/todos/${todo._id}`, { status: 3 })
+        await this.getTodosData()
+        this.$message.success('该待办项归类至已放弃中')
+
+        // 删除的项如果在删除前是被勾选，则需从checkedTodos中剔除,并更改全选的状态
+        this.checkedTodos = this.checkedTodos.filter(todoId => {
+          return todoId !== todo._id
         })
-        .then(() => {
-          this.$message.success('该待办项归类至已放弃中')
-          this.getTodosData()
-        })
-        .catch(err => {
-          if (err.response) {
-            this.$message.error(err.response.data)
-          }
-        })
+        let checkedCount = this.checkedTodos.length
+        this.isIndeterminate =
+          checkedCount > 0 && checkedCount < this.todosData.undone.length
+      } catch (err) {
+        if (err.response) {
+          this.$message.error(err.response.data)
+        }
+      }
     },
+    // forgoTodoUndone(todo) {
+    //   this.$http.patch(`/todos/${todo._id}`, { status: 3 }).then(res => {
+    //     this.getTodosData().then(res => {
+    //       // 删除的项如果在删除前是被勾选，则需从checkedTodos中剔除,并更改全选的状态
+    //     this.checkedTodos = this.checkedTodos.filter(todoId => {
+    //       return todoId !== todo._id
+    //     })
+    //     let checkedCount = this.checkedTodos.length
+    //     this.isIndeterminate =
+    //       checkedCount > 0 && checkedCount < this.todosData.undone.length
+    //       debugger
+    //     })
+    //   })
+    // },
 
     // 前往待办事项编辑页面
     editTodoUndone(todo) {
