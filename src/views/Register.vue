@@ -1,32 +1,16 @@
 <template>
   <div class="wrapper">
-    <el-form
-      :model="form"
-      :rules="rules"
-      ref="form"
-      label-width="80px"
-      label-position="left"
-    >
-      <el-form-item
-        label="用户名"
-        prop="username"
-      >
-        <el-input
-          placeholder="请输入用户名"
-          v-model="form.username"
-          clearable
-        ></el-input>
+    <el-form :model="form" :rules="rules" ref="form" label-width="80px" label-position="left">
+      <el-form-item label="用户名" prop="username">
+        <el-input placeholder="请输入用户名" v-model="form.username" clearable></el-input>
       </el-form-item>
-      <el-form-item
-        label="密码"
-        prop="password"
-      >
+      <el-form-item label="密码" prop="password">
         <el-input
           placeholder="请输入密码"
           v-model="form.password"
           show-password
-         clearable
-         @keyup.enter.native="register"
+          clearable
+          @keyup.enter.native="register"
         ></el-input>
       </el-form-item>
       <el-form-item>
@@ -42,6 +26,7 @@
 
 <script>
 export default {
+  name: "Register",
   data() {
     return {
       form: {

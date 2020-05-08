@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'App'
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #app {
   min-width: 350px;
   max-width: 1200px;

@@ -7,7 +7,7 @@ import store from './store'
 // 按需引入element ui
 import {
   Button, Input, Checkbox, CheckboxGroup, Row, Col, Form, FormItem, TimePicker, Tabs,
-  TabPane, Collapse, CollapseItem, Radio, RadioGroup, Message
+  TabPane, Collapse, CollapseItem, Radio, RadioGroup, Message, Alert
 } from 'element-ui'
 Vue.use(Button)
 Vue.use(Input)
@@ -24,6 +24,7 @@ Vue.use(Collapse)
 Vue.use(CollapseItem)
 Vue.use(Radio)
 Vue.use(RadioGroup)
+Vue.use(Alert)
 Vue.prototype.$message = Message
 
 // 自定义axios实例
@@ -35,12 +36,15 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.response.use(function (response) {
   return response
 }, function (error) {
+
   // 用户未通过服务器验证时，需进入登录页面重新登录
   if (error.response.status === 401) {
     router.push('/login')
   }
   return Promise.reject(error)
 })
+
+// 在Vue原型上挂载axios实例，以在vue实例中可以通过$http使用axios
 Vue.prototype.$http = axiosInstance
 
 Vue.config.productionTip = false

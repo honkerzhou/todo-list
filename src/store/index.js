@@ -6,44 +6,47 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    // 是否登录过本网站
+    loginFlag: localStorage.getItem('loginFlag') || false,
+
     // 待办清单的所有数据
-    todosData: {
-      undone: [],
-      done: [],
-      forgone: []
-    },
+    // todosData: {
+    //   undone: [],
+    //   done: [],
+    //   forgone: []
+    // },
 
     // 待办事项类型：1日 2周 3月 4年
-    todoType: 1
+    // todoType: 1
   },
   mutations: {
     // 修改待办清单的所有数据
-    changeTodosData(state, payload) {
-      state.todosData = payload.todosData
-    }
+    // changeTodosData(state, payload) {
+    //   state.todosData = payload.todosData
+    // }
   },
   actions: {
     // 获取所有待办项的数据
-    getTodosData({ state, commit }) {
-      return new Promise((resolve) => {
-        Vue.prototype.$http
-          .get("/todos", {
-            params: {
-              type: state.todoType
-            }
-          })
-          .then(res => {
-            commit('changeTodosData', {
-              todosData: res.data
-            })
-            resolve()
-          })
-          .catch(err => {
-            if (err.response) {
-              Vue.prototype.$message.error(err.response.data)
-            }
-          })
-      })
-    }
+    // getTodosData({ state, commit }) {
+    //   return new Promise((resolve) => {
+    //     Vue.prototype.$http
+    //       .get("/todos", {
+    //         params: {
+    //           type: state.todoType
+    //         }
+    //       })
+    //       .then(res => {
+    //         commit('changeTodosData', {
+    //           todosData: res.data
+    //         })
+    //         resolve()
+    //       })
+    //       .catch(err => {
+    //         if (err.response) {
+    //           Vue.prototype.$message.error(err.response.data)
+    //         }
+    //       })
+    //   })
+    // }
   }
 })

@@ -8,26 +8,16 @@
       label-position="left"
       class="form"
     >
-      <el-form-item
-        label="用户名"
-        prop="username"
-      >
-        <el-input
-          placeholder="请输入用户名"
-          v-model="form.username"
-          clearable
-        ></el-input>
+      <el-form-item label="用户名" prop="username">
+        <el-input placeholder="请输入用户名" v-model="form.username" clearable></el-input>
       </el-form-item>
-      <el-form-item
-        label="密码"
-        prop="password"
-      >
+      <el-form-item label="密码" prop="password">
         <el-input
           placeholder="请输入密码"
           v-model="form.password"
           show-password
-         clearable
-         @keyup.enter.native="login"
+          clearable
+          @keyup.enter.native="login"
         ></el-input>
       </el-form-item>
       <el-form-item>
@@ -43,6 +33,7 @@
 
 <script>
 export default {
+  name: "Login",
   data() {
     return {
       form: {
