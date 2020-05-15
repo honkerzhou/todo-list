@@ -1,6 +1,6 @@
 # todo-list
 一个体验全栈开发的入门级练手项目，前后端分离。  
-前端：Vue CLI 3.x + Vue 2.x + Vue Router + Vuex + Element-UI + Axios + ES6  
+前端：Vue CLI 3.x + Vue 2.x + Vue Router + Vuex + Element-UI + Axios + ES6+  
 后端：Node.js(Koa2) + MongoDB + Restful API  
 
 
@@ -49,9 +49,12 @@
   - [x] Element UI 按需加载(`chunk-vendors.js`从803KB降至321KB，目标244KB)
   - [x] 路由懒加载
   - [ ] 使用 CDN 外部加载资源（今天尝试了一下，有两个问题：1、CDN可能会挂；2、开发和线上环境暂时无法完全分离配置，待继续研究）
+- [ ] 单元测试
+- [ ] E2E测试
 - [ ] 开发V2版本
   - [ ] 每日待办重置（可选择恢复前一日未做完的待办）
   - [ ] 历史待办清单
+  - [ ] 节流与防抖
 ## License
 [Apache2.0](./LICENSE)
 

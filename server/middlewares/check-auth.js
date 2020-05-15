@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const handleRes = require('../utils/response')
-const config = require('../config')
+const config = require('../utils/config')
 const mongoose = require('mongoose')
 
 // 自定义的权限验证中间件，使用jwt
