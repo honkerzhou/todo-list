@@ -5,14 +5,11 @@ const initDB = dbUrl => {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
+  }).then(result => {
+    console.log('connected to MongoDB')
   })
-
-  mongoose.connection.on('connected', function () {
-    console.log('------Mongoose connection open to ' + dbUrl + '------')
-  })
-
-  mongoose.connection.on('error', function (err) {
-    console.log('Mongoose connection error: ' + err)
+  .catch((error) => {
+    console.log('error connecting to MongoDB:', error.message)
   })
 
   mongoose.connection.on('disconnected', function () {

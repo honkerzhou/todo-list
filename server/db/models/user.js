@@ -32,6 +32,14 @@ const userSchema = new Schema({
   }
 })
 
+userSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
+
 // 使用'mongoose-unique-validator'插件校验唯一（unique）字段
 userSchema.plugin(uniqueValidator, {
   message: '该用户名已存在'

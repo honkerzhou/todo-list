@@ -24,4 +24,4 @@ app.listen(config.PORT, function () {
   )
 })
 
-initDB(config.DB_URL)
+initDB(process.env.MONGODB_URL)

@@ -50,6 +50,14 @@ const todoSchema = new Schema({
   }
 })
 
+todoSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
+
 const TodoModel = mongoose.model('Todo', todoSchema)
 
 module.exports = TodoModel
