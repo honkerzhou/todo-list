@@ -1,5 +1,12 @@
+require('dotenv').config()
+
+let PORT = process.env.PORT
+let MONGODB_URI = process.env.MONGODB_URI
+let JWT_SECRET = process.env.JWT_SECRET
+
 module.exports = {
-  PORT: 5000,
-  DB_URL: 'mongodb://localhost:27017/todo',
-  jwtSecret: 'todoListByHonkerzhou'
+  MONGODB_URI,
+  PORT,
+  JWT_SECRET
 }
+

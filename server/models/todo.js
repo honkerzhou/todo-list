@@ -46,7 +46,8 @@ const todoSchema = new Schema({
 
   // 待办事项所属用户的用户id
   ownerId: {
-    type: Schema.Types.ObjectId
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 })
 
@@ -57,6 +58,7 @@ todoSchema.set('toJSON', {
     delete returnedObject.__v
   }
 })
+
 
 const TodoModel = mongoose.model('Todo', todoSchema)
 
