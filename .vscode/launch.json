@@ -9,12 +9,12 @@
       "request": "launch",
       "name": "launch",
       "runtimeExecutable": "nodemon",
-      "program": "${workspaceFolder}/server/index.js",
+      "program": "${workspaceFolder}/index.js",
       "restart": true,
       // "console": "integratedTerminal",
-      "envFile": "${workspaceFolder}/server/.env",
+      "envFile": "${workspaceFolder}/.env",
       "skipFiles": [
-        "${workspaceFolder}/server/node_modules/**/*.js",
+        "${workspaceFolder}/node_modules/**/*.js",
         "<node_internals>/**/*.js"
       ],
       // "windows": {
