@@ -1,60 +1,115 @@
-# todo-list
-一个体验全栈开发的入门级练手项目，前后端分离。  
-前端：Vue CLI 3.x + Vue 2.x + Vue Router + Vuex + Element-UI + Axios + ES6+  
-后端：Node.js(Koa2) + MongoDB + Restful API  
+# todo-list-server &middot; [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+一个体验全栈开发的由浅入深练手项目，前后端分离。本仓库为后端部分，后端部分见[todo-list-client](https://github.com/honkerzhou/todo-list-client)  
+前端：Vue CLI 4.x + Vue 2.x + Vue Router + Vuex + Element-UI + Axios + ES6  
+后端：Node.js(Koa2) + MongoDB + Restful API   
+测试：Jest 
 
-
-如果有兴趣的话，欢迎大家加入，随意造作（doc目录下有个简丑的原型:joy:）。
-## 特性
+如果有兴趣的话，欢迎大家加入，随意造作
+## Features
+- 离线可用
 - JWT用户验证
-- Restful API
-- 响应式布局（略丑，待完善）
+- REST风格的 API
 - ......
-## 项目资源
+
+## Resource
 在线地址：[todo.honkerzhou.com](http://todo.honkerzhou.com)  
 体验账号/密码：honkerzhou  
 配套教程（完善中）：[手把手带你入门全栈](https://honkerzhou.com/tutorial/todo-list/)
-## 运行项目
-1. 先clone代码到本地
-    ```sh
-    git clone https://github.com/honkerzhou/todo-list.git
-    ```
-2. 再启动前端
-    ```sh
-    cd todo-list
-    npm install
-    npm run dev
-    ```
-3. 最后启动后端(前提是已经安装了MongoDB)
-    ```sh
-    cd server
-    npm install
-    npm run dev
-    ```
-## 准备做
-- [ ] 为该项目写一个新手教程
-  - [x] 项目介绍
-  - [x] 项目准备
-  - [ ] koa知识讲解
-  - [ ] mongoose知识讲解
-  - [ ] restful api知识讲解
-  - [ ] jwt用户验证知识讲解
-  - [ ] vue知识讲解
-  - [ ] vue-router知识讲解
-- [x] 规范化代码并添加代码注释
-- [ ] 美化和优化界面
-  - [x] 修复问题: 待处理事项数目变动时，`做完啦`的按钮没有隐藏
-  - [x] 修复问题: 待办内容比较长时，文字不换行显示
-- [ ] 首屏渲染性能优化
-  - [x] Element UI 按需加载(`chunk-vendors.js`从803KB降至321KB，目标244KB)
-  - [x] 路由懒加载
-  - [ ] 使用 CDN 外部加载资源（今天尝试了一下，有两个问题：1、CDN可能会挂；2、开发和线上环境暂时无法完全分离配置，待继续研究）
+
+
+## Installing / Getting started
+```shell
+git clone https://github.com/honkerzhou/todo-list-server.git
+cd todo-list-server
+npm install
+touch .env
+```
+在`.env`文件中写入并保存：
+```
+MONGODB_URI='mongodb://localhost/todolist'
+TEST_MONGODB_URI='mongodb://localhost/todolist-test'
+PORT=5000
+JWT_SECRET='todoListByHonkerzhou'
+```
+然后运行
+```shell
+npm run dev
+```
+运行完后，接口运行在`http://localhost:5000/`，可通过以下方式体验：
+1. [postman](https://www.postman.com/)
+2. 与前端部分[todo-list-client](https://github.com/honkerzhou/todo-list-client)配合使用，在浏览器观察HTTP请求与响应
+3. 如果你使用的是`VS Code`,可以使用`REST Client`插件，并配合`requests`目录下的请求文件体验，具体方法：
+
+
+建议先行阅读`REST Client`插件的文档：[vscode-restclient](https://github.com/Huachao/vscode-restclient)后再阅读以下步骤
+
+先在`VS Code`的`settings.json`加入以下配置：
+```json
+// REST Client插件配置
+"rest-client.environmentVariables": {
+  "$shared": {
+    "nonProdToken": "这里放token"
+  },
+  "local": {
+    "host": "localhost:5000",
+    "token": "{{$shared nonProdToken}}",
+  },
+  "production": {
+    "host": "example.com",
+    "token": "{{$shared prodToken}}",
+  }
+}
+```
+保存后，快捷键`Ctrl+Shift+p`打开命令面板，输入`Rest Client: Switch Environment`，单击进入切换环境，切换为`local`  
+
+然后在`request/users.rest`发送请求，注册一个用户，将接口返回的`token`粘贴到`VS Code`的`settings.json`下刚刚配置的“REST Client插件配置”中的`nonProdToken`处，保存后即可使用`requests`目录下的其他请求文件
+
+
+## Developing
+
+### Built With
+1. Koa2
+
+### Prerequisites
+1. Node.js >= 12.x
+2. MongoDB >= 4.2
+
+
+### Setting up Dev
+没啥要求，遵守GitHub Flow就行
+
+### Deploying / Publishing
+暂无
+
+## Configuration
+暂无
+
+## Tests
+```shell
+npm run test
+```
+
+## Style guide
+
+[Standard](https://github.com/standard/standard)
+
+## Api Reference
+暂无
+
+
+## Todos
+
+- [ ] HTTP缓存
 - [ ] 单元测试
 - [ ] E2E测试
 - [ ] 开发V2版本
   - [ ] 每日待办重置（可选择恢复前一日未做完的待办）
   - [ ] 历史待办清单
-  - [ ] 节流与防抖
-## License
-[Apache2.0](./LICENSE)
+
+## Licensing
+[MIT](./LICENSE)
+
+
+
+
 

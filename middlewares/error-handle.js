@@ -29,10 +29,18 @@ const errorHandler = async (ctx, next) => {
       }
       // 自定义koa-jwt模块token认证失败抛出的错误
       case 'UnauthorizedError': {
-        ctx.status = 401
-        ctx.body = {
-            message: '用户认证失败'
+        if (error.originalError.name === 'TokenExpiredError') {
+          ctx.status = 403
+          ctx.body = {
+            message: '登录有效期过期，请重新登录'
+          }
+        } else {
+          ctx.status = 401
+          ctx.body = {
+            message: '请先登录'
+          }
         }
+        
         break
       }
       default:

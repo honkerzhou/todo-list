@@ -36,9 +36,9 @@ sessionsRouter.post('/', async (ctx) => {
     await bcrypt.compare(password, userData.passwordHash)
 
   if (!(userData && passwordCorrect)) {
-    ctx.status = 401
+    ctx.status = 400
     ctx.body = {
-      error: '用户名或密码错误'
+      message: '用户名或密码错误'
     }
     return
   }
@@ -46,7 +46,7 @@ sessionsRouter.post('/', async (ctx) => {
   const token = jwt.sign({
     id: userData.id
   }, config.JWT_SECRET, {
-    expiresIn: '1h'
+    expiresIn: 60
   })
   ctx.status = 200
   ctx.body = {

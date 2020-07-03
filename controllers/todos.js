@@ -7,7 +7,7 @@ const todosRouter = new Router({
 const UserModel = require('../models/user')
 const TodoModel = require('../models/todo')
 
-// 根据用户id和待办事项类型查找相应待办事项
+// 获取用户的所有待办事项
 todosRouter.get('/', async (ctx) => {
   const userId = ctx.state.user.id
   const userWithTodos = await UserModel.findById(userId).populate({
@@ -34,6 +34,13 @@ todosRouter.get('/', async (ctx) => {
         break
     }
   })
+  ctx.status = 200
+  ctx.body = data
+})
+
+// 获取单个待办事项
+todosRouter.get('/:id', async (ctx) => {
+  const data = await TodoModel.findById(ctx.params.id)
   ctx.status = 200
   ctx.body = data
 })
